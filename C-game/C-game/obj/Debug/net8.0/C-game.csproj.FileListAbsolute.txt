@@ -1,0 +1,15 @@
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\bin\Debug\net8.0\C-game.exe
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\bin\Debug\net8.0\C-game.deps.json
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\bin\Debug\net8.0\C-game.runtimeconfig.json
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\bin\Debug\net8.0\C-game.dll
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\bin\Debug\net8.0\C-game.pdb
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.AssemblyInfoInputs.cache
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.AssemblyInfo.cs
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.csproj.CoreCompileInputs.cache
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.sourcelink.json
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.dll
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\refint\C-game.dll
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.pdb
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\C-game.genruntimeconfig.cache
+C:\Users\frida\OneDrive\Skrivbord\Webutveckling\C-game\C-game\C-game\obj\Debug\net8.0\ref\C-game.dll
