@@ -1,34 +1,70 @@
 ﻿// See https://aka.ms/new-console-template for more information
+// this is the vending machine 
+using C_game;
 
+var user = new User()
+{
+    Money = 100,
+    BoughtItems = new List<string>(),
+};
+var bank = new Bank();
+
+var inventory = new Inventory()
+{
+    Items = new List<string>
+    {
+        "1 Soda $4",
+        "2 Chocolate $2",
+        "3 Crisps $4",
+        "4 Unicorn $78",
+        "5 Car Keys $23",
+        "6 Earth Bound (SNES) $40",
+        "7 Cinema Tickets $20",
+        "8 The Room (DVD) $65",
+        "9 Triss-scratch Ticket $3"
+    }
+};
+var vendingMachine = new VendingMachine();
 Console.WriteLine("Welcome to The Fantastic Vending Machine.");
 Console.WriteLine("What would you like to do?");
 Console.WriteLine("     A. Check your bank account");
 Console.WriteLine("     B. See available goods");
-string answer = "";
- ReadAnswer(answer);
+var answer = "";
+ReadAnswer(answer);
 
 
-   string ReadAnswer(string prompt)
- {
-     do
+
+    void ReadAnswer(string prompt)
     {
-        answer = Console.ReadLine().ToUpper();
-        if (answer == "A")
+        do
         {
-            return answer = "A. Check Bank Account";
-        }
+            answer = Console.ReadLine().ToUpper();
+            if (answer == "A")
+            {
+                goToBank();
+            }
 
-        if (answer == "B")
-        {
-            return answer = "B. See available goods";
-        }
-        else
-        {
-            Console.WriteLine("please type A or B");
-            continue;
-        }
-    } while (answer != "A" && answer != "B");
+            if (answer == "B")
+            {
+                goToInventory();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("please type A or B");
+                Console.ResetColor();
+            }
+        } while (answer != "A" && answer != "B");
+    }
 
-     return answer;
+ void goToBank()
+ {
+     bank.SeeFunds(user);
+
  }
- Console.WriteLine(answer);
+
+ void goToInventory()
+ {
+     vendingMachine.ShowInventory(inventory);
+     
+ }

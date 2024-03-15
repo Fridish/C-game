@@ -1,0 +1,9 @@
+1 Soda $ 4
+2 Chocolate $ 2
+3 Crisps $ 4
+4 Unicorn $ 78
+5 Car Keys $ 23
+6 Earth Bound (SNES) $ 40
+7 Cinema Tickets $ 20
+8 The Room (DVD) $ 65
+9 Triss-scratch Ticket $ 3
