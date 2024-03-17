@@ -1,13 +1,19 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // this is the vending machine 
+
+using System.Runtime.InteropServices.Marshalling;
 using C_game;
 
+//initiate the objects used for the vending machine
 var user = new User()
 {
-    Money = 100,
+    Money = 60,
     BoughtItems = new List<string>(),
 };
-var bank = new Bank();
+var bank = new Bank()
+{
+UserAccount= user
+};
 
 var inventory = new Inventory()
 {
@@ -24,47 +30,43 @@ var inventory = new Inventory()
         "9 Triss-scratch Ticket $3"
     }
 };
-var vendingMachine = new VendingMachine();
+var vendingMachine = new VendingMachine()
+{
+    Customer = user,
+    Products = inventory,
+};
+
+// start the program 
+Console.ForegroundColor = ConsoleColor.Blue;
 Console.WriteLine("Welcome to The Fantastic Vending Machine.");
-Console.WriteLine("What would you like to do?");
-Console.WriteLine("     A. Check your bank account");
-Console.WriteLine("     B. See available goods");
+Console.ResetColor();
+
+//Initiate the method that displays the choices.
 var answer = "";
-ReadAnswer(answer);
-
-
-
-    void ReadAnswer(string prompt)
+do
+{
+    answer = vendingMachine.InitiateApp();
+    answer = vendingMachine.ReadAnswer(answer);
+    if (answer == "A")
     {
-        do
-        {
-            answer = Console.ReadLine().ToUpper();
-            if (answer == "A")
-            {
-                goToBank();
-            }
-
-            if (answer == "B")
-            {
-                goToInventory();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("please type A or B");
-                Console.ResetColor();
-            }
-        } while (answer != "A" && answer != "B");
+        bank.SeeFunds(user);
+        vendingMachine.InitiateApp();
     }
+    else if (answer == "B")
+    {
+        int choice = vendingMachine.ShowInventory();
+        if (choice != 0)
+        {
+            // make sure to retrieve both variables
+            (string product, int price) = vendingMachine.ChooseProduct(choice);
+            if (product != "return" && price != 0)
+            {
+                (product, price) = vendingMachine.BuyItem(product, price);
+                bank.PurchaseItem(product, price);
+                vendingMachine.InitiateApp();
+            }
+        }
+    }
+} while (answer != "C");
 
- void goToBank()
- {
-     bank.SeeFunds(user);
 
- }
-
- void goToInventory()
- {
-     vendingMachine.ShowInventory(inventory);
-     
- }
