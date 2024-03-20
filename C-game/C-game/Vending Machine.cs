@@ -73,8 +73,10 @@ public class VendingMachine()
         do
         {
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(
                 "What would you like to buy today? Please enter the product number or 'return' to cancel");
+            Console.ResetColor();
             input = Console.ReadLine().ToUpper();
             // if the user types return, return to start page.
             if (input == "RETURN")
@@ -87,7 +89,9 @@ public class VendingMachine()
                 return inputInt;
             }
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please enter a valid answer");
+            Console.ResetColor();
         } while (input != "RETURN");
 
         return 0;
@@ -141,7 +145,9 @@ public class VendingMachine()
             input = Console.ReadLine().ToUpper();
             if (input == "YES")
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Thank you for your purchase. here is your item.");
+                Console.ResetColor();
                 return (product,cost); 
             }
 
@@ -162,7 +168,9 @@ public class VendingMachine()
         do
         {
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Would you like ot buy something else? Yes/No");
+            Console.ResetColor();
             answer = Console.ReadLine().ToUpper();
             if (answer == "YES")
             {
