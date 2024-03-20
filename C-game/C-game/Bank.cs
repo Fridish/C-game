@@ -3,15 +3,24 @@ namespace C_game;
 public class Bank ()
 {
     public User UserAccount { get; set; }
+    
+    //display the users' funds
     public void SeeFunds(User UserAccount)
     {
-        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"you have ${UserAccount.Money} left in your account.");
         Console.ResetColor();
     }
 
-    public void PurchaseItem(string product, int price)
+    // withdraw the money form the account
+    public void PurchaseItem( int price)
     {
-        Console.WriteLine("this is the bank");
+     
+        UserAccount.Money -= price;
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine();
+        Console.WriteLine($"Your current balance is ${UserAccount.Money}");
+        Console.ResetColor(); 
     }
 }

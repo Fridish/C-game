@@ -6,19 +6,24 @@ public class VendingMachine()
 {
     public User Customer { get; set; }
     public Inventory Products { get; set; }
-
-//display products in the inventory
+    
+    
+    // Initiate the app in the vending machine
     public string InitiateApp()
     {
-
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("What would you like to do?");
+        Console.ResetColor();
         Console.WriteLine("     A. Check your bank account");
-        Console.WriteLine("     B. See available goods");
-        Console.WriteLine("     C. Exit App");
+        Console.WriteLine("     B. See your bought goods");
+        Console.WriteLine("     C. See available goods");
+        Console.WriteLine("     D. Exit App");
         var answer = "";
         return answer;
     }
 
+    // read what the user answers
     public string ReadAnswer(string answer)
     {
         do
@@ -34,19 +39,28 @@ public class VendingMachine()
                 
                 return answer;
             }
-            else if (answer != "C")
+
+            if (answer == "C")
             {
+                return answer;
+            }
+            if (answer != "D")
+            {
+                Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("please type A, B or C");
+                Console.WriteLine("please type A, B, C or D");
                 Console.ResetColor();
             }
-        } while (answer != "C");
+        } while (answer != "D");
 
         return answer;
     }
 
+    
+    // display all items for sale. Unlimited ammount of items
     public int ShowInventory()
     {
+        Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("These are the available items:");
         Console.ResetColor();
@@ -58,6 +72,7 @@ public class VendingMachine()
         var input = "";
         do
         {
+            Console.WriteLine();
             Console.WriteLine(
                 "What would you like to buy today? Please enter the product number or 'return' to cancel");
             input = Console.ReadLine().ToUpper();
@@ -71,7 +86,7 @@ public class VendingMachine()
             {
                 return inputInt;
             }
-
+            Console.WriteLine();
             Console.WriteLine("Please enter a valid answer");
         } while (input != "RETURN");
 
@@ -79,6 +94,7 @@ public class VendingMachine()
     }
 
 
+    //display the chosen product and make sure the user can afford it
     public (string, int) ChooseProduct(int input)
     {
         foreach (string item in Products.Items)
@@ -89,14 +105,14 @@ public class VendingMachine()
             {
                 // make price and item into their own variable and send it forth.
                 var lastItem = itemSplit[^1].Split("$");
-                Console.WriteLine(lastItem[1]);
                 int.TryParse(lastItem[1], out var cost);
                 string[] productArray = itemSplit[1..^1];
                 string product = string.Join(" ", productArray);
-                Console.WriteLine(product);
+                    Console.WriteLine(product);
                 if (Customer.Money < cost)
                 {
                     {
+                        Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("i'M SORRY, YOU DON'T HAVE ENOUGH MONEY FOR THAT");
                         Console.ResetColor();
@@ -111,13 +127,16 @@ public class VendingMachine()
         return ("return", 0);
     }
 
+    
+    // if the user can afford the item, ask if they want to complete the purchase
     public (string, int) BuyItem(string product, int cost)
     {
         string input = "";
         do
         {
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"that will be {cost} dollar. Would you like to continue your purchase? Type Yes or No");
+            Console.WriteLine($"that will be ${cost}. Would you like to continue your purchase? Type Yes or No");
             Console.ResetColor();
             input = Console.ReadLine().ToUpper();
             if (input == "YES")
@@ -133,6 +152,29 @@ public class VendingMachine()
 
         } while (input != "YES" || input != "NO");
         return (product, cost);
+    }
+
+    
+    // ask user if they want to buy something else or return to start menu.
+    public int BuyMore()
+    {
+        string answer;
+        do
+        {
+            Console.WriteLine();
+            Console.WriteLine("Would you like ot buy something else? Yes/No");
+            answer = Console.ReadLine().ToUpper();
+            if (answer == "YES")
+            {
+                return 1;
+            }
+            else if (answer == "NO")
+            {
+                return 0;
+            }
+        } 
+        while (answer != "YES" || answer != "NO");
+        return 0;
     }
    
 }
