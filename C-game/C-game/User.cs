@@ -1,5 +1,5 @@
 namespace C_game;
-//This is the user controller. This controller displays the money and goods the user has
+//This is the user class. The user accepts money and bought items
 public class User ()
 {
     public int Money { get; set; }
